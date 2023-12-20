@@ -1,0 +1,93 @@
+import time
+
+def introduction():
+    print("Welcome to the Fairies Adventure!")
+    time.sleep(1)
+    print("You find yourself at the entrance of a mystical world.")
+    time.sleep(1)
+    print("There are six paths ahead of you.")
+
+def choose_path():
+    print("Which path do you choose? (1, 2, 3, 4, 5, or 6)")
+    choice = input()
+    return choice
+
+def forest_encounter(choice, score):
+    print("You chose path", choice)
+    time.sleep(1)
+
+    if choice == "1":
+        print("You take the leftmost path and encounter a baby of luck.")
+        time.sleep(1)
+        print("The baby of luck gives you luck and wealth, and you gain 20 points.")
+        return score + 20
+    elif choice == "2":
+        print("You choose the second path and come across a mystical portal.")
+        time.sleep(1)
+        print("Curious, you step through the portal and find yourself in a magical realm.")
+        time.sleep(1)
+        print("Your journey through the magical realm adds 20 points to your score.")
+        return score + 20
+    elif choice == "3":
+        print("You opt for the third path and discover a hidden waterfall with healing powers.")
+        time.sleep(1)
+        print("You decide to bathe in the magical waters, and your health improves. You gain 10 points.")
+        return score + 10
+    elif choice == "4":
+        print("You take the fourth path and encounter mischievous forest spirits.")
+        time.sleep(1)
+        print("The spirits challenge you to a game. You succeed, and they reward you with 25 points.")
+        return score + 25
+    elif choice == "5":
+        print("You choose the fifth path and fall into a deep pit. Game over.")
+        return -1  
+    elif choice == "6":
+        print("You opt for the rightmost path and encounter a mysterious guardian of the forest.")
+        time.sleep(1)
+        print("The guardian tests your courage. You pass the test and gain 18 points.")
+        return score + 18
+    else:
+        print("Invalid choice. The mystical forces of the forest are confused by your indecision. Game over.")
+        return score
+
+def end_game(score):
+    if score == -1:
+        print("Your adventure in the mystical forest ends in failure. Better luck next time!")
+    else:
+        print(f"Your adventure in the mystical forest ends with a total score of {score} points.")
+
+def play_game():
+    introduction()
+    score = 0
+    path_choice = choose_path()
+    if forest_encounter(path_choice, score) == -1:
+        end_game(-1)
+        return
+    print("You continue your journey. Five more paths lie ahead. Choose wisely!")
+    path_choice = choose_path()
+    if forest_encounter(path_choice, score) == -1:
+        end_game(-1)
+        return
+    print("You approach the next section of the forest. Four paths await you.")
+    path_choice = choose_path()
+    if forest_encounter(path_choice, score) == -1:
+        end_game(-1)
+        return
+    print("You venture deeper into the mystical forest. Three paths remain.")
+    path_choice = choose_path()
+    if forest_encounter(path_choice, score) == -1:
+        end_game(-1)
+        return
+    print("Your adventure continues. Two more paths beckon you.")
+    path_choice = choose_path()
+    if forest_encounter(path_choice, score) == -1:
+        end_game(-1)
+        return
+    print("You reach the final stretch of the mystical forest. One last path awaits you.")
+    path_choice = choose_path()
+    if forest_encounter(path_choice, score) == -1:
+        end_game(-1)
+        return
+
+    end_game(score)
+play_game()
